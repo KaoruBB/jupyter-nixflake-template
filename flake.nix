@@ -1,5 +1,5 @@
 {
-  description = "Data science environment with R and Jupyter integration";
+  description = "Data science environment with R, Python, and Julia integration via Jupyter Lab";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
