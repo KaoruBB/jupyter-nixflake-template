@@ -23,9 +23,15 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-        pythonEnv = pkgs.python3.withPackages (ps: [
-          ps.jupytext
-        ]);
+        pythonPackages =
+          ps: with ps; [
+            ipykernel
+            numpy
+            polars
+            jupytext
+            plotly
+          ];
+        pythonEnv = pkgs.python3.withPackages pythonPackages;
         rEnv = pkgs.rWrapper.override {
           packages = with pkgs.rPackages; [
             IRkernel
@@ -36,6 +42,10 @@
         jupyterLab = inputs.jupyter.lib.makeJupyterLab {
           inherit pkgs;
           kernels = {
+            "python".ipykernel = {
+              packages = pythonPackages;
+              withPlotly = true;
+            };
             "R".kernelspec = {
               spec = {
                 argv = [
@@ -58,11 +68,11 @@
         packages.default = jupyterLab;
 
         devShells.default = pkgs.mkShell {
-          name = "my-r-jupyter-env";
+          name = "my-jupyter-env";
           buildInputs = [
-            jupyterLab
             pythonEnv
             rEnv
+            jupyterLab
           ];
         };
       }
