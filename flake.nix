@@ -39,12 +39,28 @@
             languageserver
           ];
         };
+        juliaEnv = pkgs.julia-bin;
         jupyterLab = inputs.jupyter.lib.makeJupyterLab {
           inherit pkgs;
           kernels = {
             "python".ipykernel = {
               packages = pythonPackages;
               withPlotly = true;
+            };
+            "julia".kernelspec = {
+              spec = {
+                argv = [
+                  "${juliaEnv}/bin/julia"
+                  "-i"
+                  "--startup-file=no"
+                  "--color=yes"
+                  "-e"
+                  "using IJulia; IJulia.kernel()"
+                  "{connection_file}"
+                ];
+                display_name = "Julia 1.x";
+                language = "julia";
+              };
             };
             "R".kernelspec = {
               spec = {
@@ -72,8 +88,18 @@
           buildInputs = [
             pythonEnv
             rEnv
+            juliaEnv
             jupyterLab
           ];
+          shellHook = ''
+            echo "Julia development environment is ready!"
+            echo "Julia v$(julia --version | cut -d' ' -f3)"
+
+            export JULIA_DEPOT_PATH="$PWD/.julia"
+            export JULIA_PROJECT="@."
+
+            julia -e 'using Pkg; Pkg.instantiate()'
+          '';
         };
       }
     );
