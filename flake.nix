@@ -25,7 +25,7 @@
         };
         pythonPackages =
           ps: with ps; [
-            ipykernel
+            ipykernel # MUST be included for Jupyter kernel support
             numpy
             polars
             jupytext
@@ -34,7 +34,7 @@
         pythonEnv = pkgs.python3.withPackages pythonPackages;
         rEnv = pkgs.rWrapper.override {
           packages = with pkgs.rPackages; [
-            IRkernel
+            IRkernel # MUST be included for Jupyter kernel support
             tidyverse
             languageserver
           ];
