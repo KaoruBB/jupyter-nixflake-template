@@ -55,7 +55,7 @@
                   "--startup-file=no"
                   "--color=yes"
                   "-e"
-                  "using IJulia; IJulia.kernel()"
+                  "import IJulia; IJulia.run_kernel()"
                   "{connection_file}"
                 ];
                 display_name = "Julia 1.x";
