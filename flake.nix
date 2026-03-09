@@ -47,7 +47,7 @@
               withPlotly = true;
             };
             "julia".ijulia = {
-              project = ".";
+              project = "@.";
             };
             "R".kernelspec = {
               spec = {
