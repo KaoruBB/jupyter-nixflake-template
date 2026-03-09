@@ -4,7 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     jupyter = {
-      url = "github:kirelagin/jupyter.nix";
+      url = "github:KaoruBB/jupyter.nix/feat/add-julia-project-support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -39,7 +39,6 @@
             languageserver
           ];
         };
-        juliaEnv = pkgs.julia-bin;
         jupyterLab = inputs.jupyter.lib.makeJupyterLab {
           inherit pkgs;
           kernels = {
@@ -47,20 +46,8 @@
               packages = pythonPackages;
               withPlotly = true;
             };
-            "julia".kernelspec = {
-              spec = {
-                argv = [
-                  "${juliaEnv}/bin/julia"
-                  "-i"
-                  "--startup-file=no"
-                  "--color=yes"
-                  "-e"
-                  "import IJulia; IJulia.run_kernel()"
-                  "{connection_file}"
-                ];
-                display_name = "Julia 1.x";
-                language = "julia";
-              };
+            "julia".ijulia = {
+              project = ".";
             };
             "R".kernelspec = {
               spec = {
@@ -88,7 +75,7 @@
           buildInputs = [
             pythonEnv
             rEnv
-            juliaEnv
+            pkgs.julia-bin
             jupyterLab
           ];
           shellHook = ''
