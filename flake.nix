@@ -82,8 +82,8 @@
             echo "Julia development environment is ready!"
             echo "Julia v$(julia --version | cut -d' ' -f3)"
 
-            # Uncomment the following line to isolate the Julia environment within this project.
-            # export JULIA_DEPOT_PATH="$PWD/.julia"
+            # Enable local caching for Language Server (LSP) and project isolation
+            export JULIA_DEPOT_PATH="$PWD/.julia"
 
             export JULIA_PROJECT="@."
             julia -e 'using Pkg; Pkg.instantiate()'
