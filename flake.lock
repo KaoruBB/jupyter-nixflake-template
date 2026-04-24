@@ -44,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772970025,
-        "narHash": "sha256-vwhKlF+FO9836ZV2sKfM3II82Y6G0pkoo9O25f2Yor4=",
+        "lastModified": 1773022805,
+        "narHash": "sha256-GWJKKC+X3/u4CI97KBvgzHDxUg3d9n8UZO1BgB+BNf8=",
         "owner": "KaoruBB",
         "repo": "jupyter.nix",
-        "rev": "38ccbdf5db628eb44603a8f8d6fe6630f1c8a1f9",
+        "rev": "d86c8dddc67e99c722f678d241dd4f6ea5d76e70",
         "type": "github"
       },
       "original": {
@@ -60,11 +60,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772542754,
-        "narHash": "sha256-WGV2hy+VIeQsYXpsLjdr4GvHv5eECMISX1zKLTedhdg=",
+        "lastModified": 1776548001,
+        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8c809a146a140c5c8806f13399592dbcb1bb5dc4",
+        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
         "type": "github"
       },
       "original": {
