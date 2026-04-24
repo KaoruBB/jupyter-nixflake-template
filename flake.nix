@@ -39,6 +39,7 @@
             languageserver
           ];
         };
+        juliaEnv = pkgs.julia-lts;
         jupyterLab = inputs.jupyter.lib.makeJupyterLab {
           inherit pkgs;
           kernels = {
@@ -47,6 +48,7 @@
               withPlotly = true;
             };
             "julia".ijulia = {
+              julia = juliaEnv;
               project = "@.";
             };
             "R".kernelspec = {
@@ -75,7 +77,7 @@
           buildInputs = [
             pythonEnv
             rEnv
-            pkgs.julia-bin
+            juliaEnv
             jupyterLab
           ];
           shellHook = ''
