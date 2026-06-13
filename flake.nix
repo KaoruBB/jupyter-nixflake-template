@@ -4,7 +4,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     jupyter = {
-      url = "github:KaoruBB/jupyter.nix/feat/add-julia-project-support";
+      url = "github:KaoruBB/jupyter.nix/add-julia-kernel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

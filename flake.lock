@@ -44,16 +44,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1773022805,
-        "narHash": "sha256-GWJKKC+X3/u4CI97KBvgzHDxUg3d9n8UZO1BgB+BNf8=",
+        "lastModified": 1781334372,
+        "narHash": "sha256-lFAo0eLvJ6GN79wAT1orjDLcT+Tci4Dqyhd2Q0AsxnM=",
         "owner": "KaoruBB",
         "repo": "jupyter.nix",
-        "rev": "d86c8dddc67e99c722f678d241dd4f6ea5d76e70",
+        "rev": "45c0eb330fc63a4d4e49d084561773026cdf200e",
         "type": "github"
       },
       "original": {
         "owner": "KaoruBB",
-        "ref": "feat/add-julia-project-support",
+        "ref": "add-julia-kernel",
         "repo": "jupyter.nix",
         "type": "github"
       }
