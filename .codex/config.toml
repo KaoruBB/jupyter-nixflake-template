@@ -1,0 +1,8 @@
+[mcp_servers.jupyter]
+command = "uvx"
+args = ["jupyter-mcp-server@latest"]
+
+[mcp_servers.jupyter.env]
+JUPYTER_URL = "http://localhost:8888"
+JUPYTER_TOKEN = "MY_TOKEN"
+ALLOW_IMG_OUTPUT = "true"

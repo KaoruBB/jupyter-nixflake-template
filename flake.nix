@@ -32,6 +32,29 @@
             plotly
           ];
         pythonEnv = pkgs.python3.withPackages pythonPackages;
+        jupyterMcpTools = pkgs.python3Packages.buildPythonPackage rec {
+          pname = "jupyter-mcp-tools";
+          version = "0.1.6";
+          format = "wheel";
+
+          src = pkgs.fetchPypi {
+            pname = "jupyter_mcp_tools";
+            inherit version format;
+            dist = "py3";
+            python = "py3";
+            abi = "none";
+            platform = "any";
+            hash = "sha256-RcsYZY1YU6YvrM1ejqF77MOhhQSCpDxJqeS7LIVO/9c=";
+          };
+
+          dependencies = with pkgs.python3Packages; [
+            aiohttp
+            jupyter-server
+            requests
+          ];
+
+          pythonImportsCheck = [ "jupyter_mcp_tools" ];
+        };
         rEnv = pkgs.rWrapper.override {
           packages = with pkgs.rPackages; [
             IRkernel # MUST be included for Jupyter kernel support
@@ -42,6 +65,15 @@
         juliaEnv = pkgs.julia-lts;
         jupyterLab = inputs.jupyter.lib.makeJupyterLab {
           inherit pkgs;
+          jupyterEnvPackages =
+            ps: with ps; [
+              jupyter-collaboration
+              pycrdt
+              jupyterMcpTools
+            ];
+          jupyterExtensions = [
+            jupyterMcpTools
+          ];
           kernels = {
             "python".ipykernel = {
               packages = pythonPackages;
